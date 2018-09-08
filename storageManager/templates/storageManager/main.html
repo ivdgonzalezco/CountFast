@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>CountFast - Welcome {{ request.session.current_user_name }}</h2>
+
+        <hr>
+        <div class="btn-group btn-group-lg">
+            {% if request.session.current_user_role == 'A' %}
+            <a class="btn btn-primary" href="/users/init_user_registration">Users</a>
+            {% endif %}
+            {% if request.session.current_user_role == 'A' %}
+            <a class="btn btn-primary" href="/users/logout">Suppliers</a>
+            {% endif %}
+            <a class="btn btn-primary" href="/users/logout">Products</a>
+            <a class="btn btn-primary" href="/users/logout">Movements</a>
+            <a class="btn btn-primary" href="/users/logout">Defective Products</a>
+        </div>
+        <div class="btn-group btn-group-lg">
+            <a class="btn btn-primary" href="/users/logout">Logout</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
