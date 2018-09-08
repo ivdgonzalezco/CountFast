@@ -22,5 +22,6 @@ urlpatterns = [
     url (r'^users/logout', views.logout),
     path('main', views.main, name='main'),
     url(r'^users/init_user_registration', views.init_user_registration),
-    url(r'^users/register_user', views.register_user),
+    url(r'^users/init_user_edition/(?P<user_id>[0-9]+)/$', views.init_user_edition),
+    url(r'^users/save_user', views.save_user),
 ]
