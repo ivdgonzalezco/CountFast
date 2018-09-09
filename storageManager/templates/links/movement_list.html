@@ -1,0 +1,28 @@
+{% block content %}
+    <h1 align="center" style="color:DodgerBlue;">Movement List</h1>
+    {% if movement_list %}    
+		<table class="egt" align="center" >
+		<tr>
+		<th>Id Movement</th>
+		<th>Id Product</th>
+		<th>Quantity</th>
+		<th>id_user_register</th>
+		<th>register_date</th>
+		</tr>		
+      {% for movement in movement_list %}
+		<tr>
+        <td align="center">{{movement.id_movement}}</td>
+		<td align="center">{{movement.id_product}}</td>
+		<td align="center">{{movement.quantity}}</td>
+		<td align="center">{{movement.id_user_register}}</td>
+		<td align="center">{{movement.register_date}}</td>		
+		</tr>
+		<br>
+      {% endfor %}
+		</table>    
+		<br>
+	<center><a href='/links' >Main Page</a></center>
+    {% else %}
+      <p>There are no movements.</p>
+    {% endif %}       
+{% endblock %}

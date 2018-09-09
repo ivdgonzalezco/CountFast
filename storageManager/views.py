@@ -31,3 +31,7 @@ def add(request):
 		movement.save()
 		return render_to_response('links/result.html')
 	return render_to_response("links/list.html", RequestContext(request, {}))
+
+def all(request,message=""):
+	movement_list = Movement.objects.all()
+	return render_to_response('links/movement_list.html',{'movement_list': movement_list,'message': message})
