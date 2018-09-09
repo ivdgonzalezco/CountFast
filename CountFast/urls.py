@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include,url
+from storageManager import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+	path('links/', views.links, name='links'),
+	url(r'^links/new/', views.new, name='new'),
+	path('links/add/', views.add, name='add'),
+	path('', views.links, name='links'),	
 ]
