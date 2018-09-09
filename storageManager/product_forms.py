@@ -1,11 +1,20 @@
 from django import forms
-from .models import Product
+from django.forms import ModelChoiceField
+
+from .models import Product, Supplier
+
+class MenuModelChoiceField(ModelChoiceField):
+
+    def label_from_instance(self, obj):
+        return "Supplier %s" % (obj.name)
 
 class ProductForm(forms.ModelForm):
 
+    supplier = MenuModelChoiceField(queryset=Supplier.objects.all())
+
     class Meta:
         model = Product
-        fields = ('name', 'brand', 'current_amount', 'product_state', 'registration_date', 'description')
+        fields = ('name', 'brand', 'supplier', 'current_amount', 'product_state', 'registration_date', 'description')
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Product\'s name'}),
             'brand': forms.TextInput(attrs={'placeholder': 'Brand\'s name'}),

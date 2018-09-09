@@ -14,6 +14,7 @@
         <a href="{% url 'product_edit' pk=product.pk %}"><h1>{{ product.name }}</h1></a>
         <p>{{ product.description }}</p>
         <p>{{ product.brand }}</p>
+        <p>{{ product.supplier.name }}</p>
         <p>{{ product.current_amount }}</p>
         <p>{{ product.product_state|linebreaksbr }}</p>
     </div>
