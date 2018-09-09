@@ -15,7 +15,7 @@ class Product(models.Model):
     registration_date = models.DateField(default=now().today().date())
     description = models.TextField(default="")
 
-class supplier(models.Model):
+class Supplier(models.Model):
 
     SUPPLIER_STATE = (
         ('A', 'Activate'),

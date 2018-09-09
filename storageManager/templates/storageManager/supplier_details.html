@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="post">
+        {% if supplier.registration_date %}
+            <div class="date">
+                {{ supplier.registration_date }}
+            </div>
+        {% endif %}
+        <a href="{% url 'supplier_edit' pk=supplier.pk %}"><h1>{{ supplier.name }}</h1></a>
+        <p>{{ supplier.nit }}</p>
+        <p>{{ supplier.supplier_state|linebreaksbr }}</p>
+    </div>
+</body>
+</html>

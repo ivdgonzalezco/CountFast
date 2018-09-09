@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1><a href="{% url 'supplier_new' %}">New</a></h1>
+{% for supplier in suppliers %}
+    <div>
+        <p>Fecha de registro: {{ supplier.registration_date }}</p>
+        <h1><a href="{% url 'supplier_details' pk=supplier.pk %}">{{ supplier.name }}</a></h1>
+    </div>
+{% endfor %}
+</body>
+</html>
