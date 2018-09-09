@@ -5,8 +5,14 @@
     <title>Product List</title>
 </head>
 <body>
-<div>
-    {{ products.name }}
-</div>
+<h1><a href="{% url 'product_new' %}">New</a></h1>
+{% for product in products %}
+    <div>
+        <p>Fecha de registro: {{ product.registration_date }}</p>
+        <h1><a href="{% url 'product_details' pk=product.pk %}">{{ product.name }}</a></h1>
+        <p>{{ product.description}}</p>
+        <p>{{ product.current_amount|linebreaksbr }}</p>
+    </div>
+{% endfor %}
 </body>
 </html>
