@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div class="post">
+{% extends "storageManager/base.html" %}
+
+{% block title %}{{ supplier.name }} - CountFast{% endblock %}
+
+{% block content %}
+    <div class="">
         {% if supplier.registration_date %}
-            <div class="date">
+            <div class="">
                 {{ supplier.registration_date }}
             </div>
         {% endif %}
@@ -15,5 +13,4 @@
         <p>{{ supplier.nit }}</p>
         <p>{{ supplier.supplier_state|linebreaksbr }}</p>
     </div>
-</body>
-</html>
+{% endblock %}
