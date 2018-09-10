@@ -12,6 +12,6 @@
         <a href="{% url 'user_edit' pk=user.pk %}"><h1>{{ user.name }}</h1></a>
         <p>{{ user.login }}</p>
         <p>{% if user.user_role == 'A' %}Administrator{% else %}Employee{% endif %}</p>
-        <p>{% if user.user_role == 'A' %}Active{% else %}Inactive{% endif %}</p>
+        <p>{% if user.user_state == 'A' %}Active{% else %}Inactive{% endif %}</p>
     </div>
 {% endblock %}

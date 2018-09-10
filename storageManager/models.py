@@ -28,10 +28,6 @@ class Product(models.Model):
     description = models.TextField(default="")
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
 
-
-
-
-
 class User(models.Model):
 
     USER_ROLE = (

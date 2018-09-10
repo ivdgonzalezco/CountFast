@@ -1,18 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .user_forms import UserForm
-from .models import User
-from .models import Product, Supplier
+from .models import User, Product, Supplier
+from .supplier_forms import SupplierForm
+from .product_forms import ProductForm
+from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
+
 def products(request):
     product = Product.objects.all()
     return render(request, 'storageManager/product_list.html', {'products': product})
-from .supplier_forms import SupplierForm
-from .product_forms import ProductForm
-from django.shortcuts import render, redirect, get_object_or_404
-from django.shortcuts import render_to_response
-from django.views.decorators.csrf import csrf_exempt
-import re
 
-def user_init_login(request, message = ""):
 def product_details(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'storageManager/product_details.html', {'product': product})
@@ -71,6 +68,8 @@ def supplier_edit(request, pk):
         form = SupplierForm(instance=supplier)
     return render(request, 'storageManager/supplier_new.html', {'form': form})
 
+
+def user_init_login(request, message = ""):
     return render_to_response(
         'storageManager/login.html',
         {'message': message}
@@ -109,7 +108,7 @@ def user_logout(request):
 def main(request):
     return render_to_response(
         'storageManager/main.html',
-        {'current_user_name': request.session.get('current_user_name'),
+        {'current_user_name': request.session['current_user_name'],
          'current_user_role': request.session['current_user_role']}
     )
 
