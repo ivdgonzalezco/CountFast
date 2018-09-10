@@ -1,0 +1,15 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}Users - CountFast{% endblock %}
+
+{% block content %}
+    <h1><a href="{% url 'user_new' %}">New</a></h1>
+    {% for user in users %}
+        <div>
+            <h1><a href="{% url 'user_details' pk=user.pk %}">{{ user.name }}</a></h1>
+            <p>{{ user.login }}</p>
+            <p>{% if user.user_role == 'A' %}Administrator{% else %}Employee{% endif %}</p>
+            <p>Registration Date: {{ user.registration_date | linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

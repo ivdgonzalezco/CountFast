@@ -1,10 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <div class="container">
@@ -12,17 +14,17 @@
         <hr>
         <div class="btn-group btn-group-lg">
             {#% if request.session.current_user_role == 'A' %#}
-            <a class="btn btn-primary" href="">Users</a>
+            <a class="btn btn-primary" href="{% url 'user_list' %}">Users</a>
             {#% endif %#}
             {#% if request.session.current_user_role == 'A' %#}
-            <a class="btn btn-primary" href="{% url 'supplier_list' %}">Suppliers</a>
+            <a class="btn btn-primary" href="">Suppliers</a>
             {#% endif %#}
-            <a class="btn btn-primary" href="{% url 'product_list' %}">Products</a>
-            <a class="btn btn-primary" href="/users/logout">Movements</a>
-            <a class="btn btn-primary" href="/users/logout">Defective Products</a>
+            <a class="btn btn-primary" href="">Products</a>
+            <a class="btn btn-primary" href="">Movements</a>
+            <a class="btn btn-primary" href="">Defective Products</a>
         </div>
         <div class="btn-group btn-group-lg">
-            <a class="btn btn-primary" href="/users/logout">Logout</a>
+            <a class="btn btn-primary" href="/user/logout">Logout</a>
         </div>
 </div>
 
