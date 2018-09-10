@@ -1,10 +1,38 @@
+BASE
+
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{#% static 'bootstrap.min.css' %#}">
+    <link rel="stylesheet" href="{#% static 'bootstrap-theme.min.css' %#}">
+    <link rel="stylesheet" href="{#% static 'styles.css' %#}">
 </head>
 <body>
-$END$
+    <div class="container">
+        <h2>CountFast - Welcome {{ request.session.current_user_name }}</h2>
+        <hr>
+        <div class="btn-group btn-group-lg">
+            {% if request.session.current_user_role == 'A' %}
+            <a class="btn btn-primary" href="{% url 'user_list' %}">Users</a>
+            {% endif %}
+            {% if request.session.current_user_role == 'A' %}
+            <a class="btn btn-primary" href="{% url 'supplier_list' %}">Suppliers</a>
+            {% endif %}
+            <a class="btn btn-primary" href="{% url 'product_list' %}">Products</a>
+            <a class="btn btn-primary" href="{#% url '' %#}">Movements</a>
+            <a class="btn btn-primary" href="{% url 'defective_product_list' %}">Defective Products</a>
+        </div>
+        <div class="btn-group btn-group-lg">
+            <a class="btn btn-primary" href="/user/logout">Logout</a>
+        </div>
+</div>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
 </body>
 </html>
+

@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+{% extends "storageManager/base.html" %}
+
+{% block title %}Defective Products - CountFast{% endblock %}
+
+{% block content %}
+
+    <h1><a href="{% url 'defective_product_new' %}">New</a></h1>
+    {% for defective_product in defective_products %}
+        <div>
+            <p>Fecha de registro: {{ defective_product.registration_date }}</p>
+            <h1><a href="{% url 'defective_product_details' pk=defective_products.pk %}">{{ defective_product.name }}</a></h1>
+            <p>{{ defective_products.description}}</p>
+            <p>{{ defective_product.current_amount|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
