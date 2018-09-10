@@ -1,0 +1,13 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}{{ movement.id }} - CountFast{% endblock %}
+
+{% block content %}
+    <div class="">
+	<br>
+		<p>Id Product: {{ movement.id_product_id }}</p> 
+        <p>Quantity: {{ movement.quantity }}</p>
+        <p>Date: {{ movement.register_date }}</p>               
+        <p>User Id: {{ movement.id_user_register }}</p>		
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}{{ supplier.name }} - CountFast{% endblock %}
+
+{% block content %}
+    <div class="">
+        {% if supplier.registration_date %}
+            <div class="">
+                {{ supplier.registration_date }}
+            </div>
+        {% endif %}
+        <a href="{% url 'supplier_edit' pk=supplier.pk %}"><h1>{{ supplier.name }}</h1></a>
+        <p>{{ supplier.nit }}</p>
+        <p>{{ supplier.supplier_state|linebreaksbr }}</p>
+    </div>
+{% endblock %}

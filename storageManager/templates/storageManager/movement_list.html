@@ -1,0 +1,17 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}Movements - CountFast{% endblock %}
+
+{% block content %}
+    <h1><a href="{% url 'movement_new' %}">New</a></h1>
+    {% for movement in movements %}
+        <div>	
+				
+            <h1><p>Id del Producto: <a href="{% url 'product_details' pk=movement.id_product_id %}">{{ movement.id_product_id }}</a></p></h1>			
+            <p>Cantidad: {{ movement.quantity}}</p>
+            <p>Id Usuario que realiza movimiento: {{ movement.id_user_register }}</p>
+			<p>Fecha de registro: {{ movement.register_date }}</p>	
+			<br>
+        </div>
+    {% endfor %}
+{% endblock %}

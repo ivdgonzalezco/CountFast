@@ -21,9 +21,5 @@ from storageManager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	path('links/', views.links, name='links'),
-	url(r'^links/new/', views.new, name='new'),
-	path('links/add/', views.add, name='add'),
-	path('', views.links, name='links'),
-	url(r'^links/all/', views.all, name='all'),
+	path('', include('storageManager.urls')),
 ]
