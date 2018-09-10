@@ -3,7 +3,6 @@ from .user_forms import UserForm
 from .models import User
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
-import re
 
 def user_init_login(request, message = ""):
     return render_to_response(
