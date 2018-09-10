@@ -43,7 +43,7 @@ def user_logout(request):
 def main(request):
     return render_to_response(
         'storageManager/main.html',
-        {'current_user_name': request.session.get('current_user_name'),
+        {'current_user_name': request.session['current_user_name'],
          'current_user_role': request.session['current_user_role']}
     )
 

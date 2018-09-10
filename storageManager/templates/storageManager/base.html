@@ -10,15 +10,15 @@
 </head>
 <body>
     <div class="container">
-        <h2>CountFast - Welcome {#{ request.session.current_user_name }#}</h2>
+        <h2>CountFast - Welcome {% if request.session.current_user_name %}{{ request.session.current_user_name }}{% else %}{{ current_user_name }}{% endif %}</h2>
         <hr>
         <div class="btn-group btn-group-lg">
-            {#% if request.session.current_user_role == 'A' %#}
+            {% if current_user_role == 'A' or request.session.current_user_role == 'A' %}
             <a class="btn btn-primary" href="{% url 'user_list' %}">Users</a>
-            {#% endif %#}
-            {#% if request.session.current_user_role == 'A' %#}
+            {% endif %}
+            {% if current_user_role == 'A' or request.session.current_user_role == 'A' %}
             <a class="btn btn-primary" href="">Suppliers</a>
-            {#% endif %#}
+            {% endif %}
             <a class="btn btn-primary" href="">Products</a>
             <a class="btn btn-primary" href="">Movements</a>
             <a class="btn btn-primary" href="">Defective Products</a>
