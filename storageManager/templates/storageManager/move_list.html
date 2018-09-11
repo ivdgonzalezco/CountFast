@@ -1,0 +1,20 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}Movements - CountFast{% endblock %}
+
+{% block content %}
+    <h1><a href="{% url 'move_new' %}">New</a></h1>
+    {% for move in moves %}
+        <div>
+            <h1>Nombre del producto: <a href="{% url 'product_details' pk=move.product.id %}">{{ move.product.name }}</a></h1>
+            {% if move.move_state == 'I'  %}
+                <p>Ingreso{{ linebreaksbr }}</p>
+            {% else %}
+                <p>Egreso{{ linebreaksbr }}</p>
+            {% endif %}
+            <p>Cantidad: {{ move.quantity}}</p>
+			<p>Fecha de registro: {{ move.registration_date }}</p>
+			<br>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -14,6 +14,10 @@
         <p>{{ product.brand }}</p>
         <p>{{ product.supplier.name }}</p>
         <p>{{ product.current_amount }}</p>
-        <p>{{ product.product_state|linebreaksbr }}</p>
+        {% if product.product_state == 'A'  %}
+            <p>Activate{{ linebreaksbr }}</p>
+        {% else %}
+            <p>Deactivate{{ linebreaksbr }}</p>
+        {% endif %}
     </div>
 {% endblock %}

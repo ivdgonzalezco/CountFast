@@ -1,8 +1,10 @@
+from django.db.models import F
 from django.shortcuts import render, redirect, get_object_or_404
 from .user_forms import UserForm
-from .models import User, Product, Supplier
+from .models import User, Product, Supplier, Move
 from .supplier_forms import SupplierForm
 from .product_forms import ProductForm
+from .move_forms import MoveForm
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 
@@ -142,3 +144,32 @@ def user_edit(request, pk):
     else:
         form = UserForm(instance=user)
     return render(request, 'storageManager/user_new.html', {'form': form})
+
+
+def moves(request):
+    movement = Move.objects.all()
+    product = Product.objects.all()
+    return render(request, 'storageManager/move_list.html', {'moves': movement, 'products': product})
+
+
+def move_new(request):
+    if request.method == "POST":
+        form = MoveForm(request.POST)
+        if form.is_valid():
+            move = form.save(commit=False)
+            product = get_object_or_404(Product, pk=move.product.pk)
+            if move.move_state == 'I':
+                product.current_amount = F('current_amount') + move.quantity
+            else:
+                product.current_amount = F('current_amount') - move.quantity
+            product.save()
+            move.save()
+            return redirect('move_details', pk=move.pk)
+    else:
+        form = MoveForm()
+    return render(request, 'storageManager/move_new.html', {'form': form})
+
+
+def move_details(request, pk):
+    move = get_object_or_404(Move, pk=pk)
+    return render(request, 'storageManager/move_details.html', {'move': move})

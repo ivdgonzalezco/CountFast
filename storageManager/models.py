@@ -49,3 +49,15 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+
+class Move(models.Model):
+
+    MOVE_STATE = (
+        ('I', 'Ingreso'),
+        ('E', 'Egreso')
+    )
+
+    quantity = models.IntegerField()
+    registration_date = models.DateTimeField(default=now().today().date())
+    move_state = models.CharField(max_length=1, choices=MOVE_STATE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)

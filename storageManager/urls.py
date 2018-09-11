@@ -19,4 +19,7 @@ urlpatterns = [
     path('supplier/<int:pk>/', views.supplier_details, name='supplier_details'),
     path('supplier/new', views.supplier_new, name='supplier_new'),
     path('supplier/<int:pk>/edit/', views.supplier_edit, name='supplier_edit'),
+    path('move/', views.moves, name='move_list'),
+    path('move/new', views.move_new, name='move_new'),
+    path('move/<int:pk>/', views.move_details, name='move_details'),
 ]
