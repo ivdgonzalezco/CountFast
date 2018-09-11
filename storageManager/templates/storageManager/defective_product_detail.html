@@ -1,0 +1,20 @@
+{% extends "storageManager/base.html" %}
+
+{% block title %}{{ product.name }} - CountFast{% endblock %}
+
+{% block content %}
+    <div class="">
+        {% if product.registration_date %}
+            <div class="">
+                {{ product.registration_date }}
+            </div>
+        {% endif %}
+	#En la última parte del renglón siguiente va product.name?
+        <a href="{% url 'defective_product_edit' pk=defective_product.pk %}"><h1>{{ product.name }}</h1></a>
+        <p>{{ defective_product.product.name }}</p>
+        <p>{{ defective_product.quantity }}</p>
+        <p>{{ defective_product.registration_date }}</p>
+        <p>{{ defective_product.failed_description }}</p>
+
+    </div>
+{% endblock %}

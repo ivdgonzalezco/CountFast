@@ -1,0 +1,10 @@
+
+venv/
+
+\.idea/
+
+CountFast/__pycache__/
+
+storageManager/migrations/
+
+storageManager/__pycache__/

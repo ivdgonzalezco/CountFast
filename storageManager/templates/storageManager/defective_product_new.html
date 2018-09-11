@@ -1,0 +1,12 @@
+
+{% extends "storageManager/base.html" %}
+
+{% block title %}New Defective Product - CountFast{% endblock %}
+
+{% block content %}
+    <h1>New Defective Product</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

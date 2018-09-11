@@ -61,3 +61,9 @@ class Move(models.Model):
     registration_date = models.DateTimeField(default=now().today().date())
     move_state = models.CharField(max_length=1, choices=MOVE_STATE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+class DefectiveProducts(models.Model):
+    quantity = models.IntegerField()
+    registration_date = models.DateTimeField(blank=True, null=True)
+    failed_description = models.TextField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
