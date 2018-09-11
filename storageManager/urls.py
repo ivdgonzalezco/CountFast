@@ -22,8 +22,8 @@ urlpatterns = [
     path('move/', views.moves, name='move_list'),
     path('move/new', views.move_new, name='move_new'),
     path('move/<int:pk>/', views.move_details, name='move_details'),
-]
     path('defective_product/<int:pk>/', views.defective_product_details, name='defective_product_detail'),
-    path('defective_product/', views.defective_products(), name='defective_product_list'),
+    path('defective_product/', views.defective_products, name='defective_product_list'),
     path('defective_product/new', views.defective_product_new, name='defective_product_new'),
-    path('defective_product/<int:pk>/edit/', views.defeproduct_edit, name='defective_product_edit'),
+    path('defective_product/<int:pk>/edit/', views.defective_product_edit, name='defective_product_edit'),
+]

@@ -64,6 +64,6 @@ class Move(models.Model):
 
 class DefectiveProducts(models.Model):
     quantity = models.IntegerField()
-    registration_date = models.DateTimeField(blank=True, null=True)
+    registration_date = models.DateTimeField(default=now().today().date())
     failed_description = models.TextField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

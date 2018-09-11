@@ -201,6 +201,9 @@ def defective_product_edit(request, pk):
         form = DefectiveProductForm(request.POST, instance=defective_product)
         if form.is_valid():
             defective_product = form.save(commit=False)
+            product = get_object_or_404(Product, pk=defective_product.product.pk)
+            product.current_amount = F('current_amount') - defective_product.quantity
+            product.save()
             defective_product.save()
             return redirect('defective_product_details', pk=defective_product.pk)
     else:
