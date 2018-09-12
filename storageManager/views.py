@@ -23,6 +23,8 @@ def product_new(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
+            user = User.objects.get(id=request.session['current_user_id'])
+            product.registration_user = user
             product.save()
             return redirect('product_details', pk=product.pk)
     else:
@@ -54,6 +56,8 @@ def supplier_new(request):
         form = SupplierForm(request.POST)
         if form.is_valid():
             supplier = form.save(commit=False)
+            user = User.objects.get(id=request.session['current_user_id'])
+            supplier.registration_user = user
             supplier.save()
             return redirect('supplier_details', pk=supplier.pk)
     else:
@@ -165,6 +169,8 @@ def move_new(request):
             else:
                 product.current_amount = F('current_amount') - move.quantity
             product.save()
+            user = User.objects.get(id=request.session['current_user_id'])
+            move.registration_user = user
             move.save()
             return redirect('move_details', pk=move.pk)
     else:
@@ -189,6 +195,8 @@ def defective_product_new(request):
         form = DefectiveProductForm(request.POST)
         if form.is_valid():
             defective_product = form.save(commit=False)
+            user = User.objects.get(id=request.session['current_user_id'])
+            defective_product.registration_user = user
             defective_product.save()
             return redirect('defective_product_detail', pk=defective_product.pk)
     else:
