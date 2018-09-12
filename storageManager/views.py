@@ -205,7 +205,7 @@ def defective_product_edit(request, pk):
             product.current_amount = F('current_amount') - defective_product.quantity
             product.save()
             defective_product.save()
-            return redirect('defective_product_details', pk=defective_product.pk)
+            return redirect('defective_product_detail', pk=defective_product.pk)
     else:
         form = DefectiveProductForm(instance=defective_product)
     return render(request, 'storageManager/defective_product_new.html', {'form': form})
