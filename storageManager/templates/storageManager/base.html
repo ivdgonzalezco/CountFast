@@ -19,12 +19,16 @@
             {% if current_user_role == 'A' or request.session.current_user_role == 'A' %}
             <a class="btn btn-primary" href="{% url 'supplier_list' %}">Suppliers</a>
             {% endif %}
-            <a class="btn btn-primary" href="{% url 'product_list' %}">Products</a>
-            <a class="btn btn-primary" href="{% url 'move_list' %}">Moves</a>
-            <a class="btn btn-primary" href="{% url 'defective_product_list' %}">Defective Products</a>
+            {% if current_user_role == 'A' or request.session.current_user_role == 'A' or current_user_role == 'E' or request.session.current_user_role == 'E' %}
+                <a class="btn btn-primary" href="{% url 'product_list' %}">Products</a>
+                <a class="btn btn-primary" href="{% url 'move_list' %}">Moves</a>
+                <a class="btn btn-primary" href="{% url 'defective_product_list' %}">Defective Products</a>
+            {% endif %}
         </div>
         <div class="btn-group btn-group-lg">
-            <a class="btn btn-primary" href="/user/logout">Logout</a>
+            {% if current_user_role == 'A' or request.session.current_user_role == 'A' or current_user_role == 'E' or request.session.current_user_role == 'E' %}
+                <a class="btn btn-primary" href="/user/logout">Logout</a>
+            {% endif %}
         </div>
 </div>
 

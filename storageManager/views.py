@@ -195,8 +195,11 @@ def defective_product_new(request):
         form = DefectiveProductForm(request.POST)
         if form.is_valid():
             defective_product = form.save(commit=False)
+            product = get_object_or_404(Product, pk=defective_product.product.pk)
+            product.current_amount = F('current_amount') - defective_product.quantity
             user = User.objects.get(id=request.session['current_user_id'])
             defective_product.registration_user = user
+            product.save()
             defective_product.save()
             return redirect('defective_product_detail', pk=defective_product.pk)
     else:

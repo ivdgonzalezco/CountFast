@@ -9,8 +9,8 @@
     {% for defective_product in defective_products %}
         <div>
             <p>Fecha de registro: {{ defective_product.registration_date }}</p>
-            <h1><a href="{% url 'defective_product_detail' pk=defective_products.pk %}">{{ defective_product.product.name }}</a></h1>
-            <p>{{ defective_products.description}}</p>
+            <h1><a href="{% url 'defective_product_detail' pk=defective_product.pk %}">{{ defective_product.product.name }}</a></h1>
+            <p>{{ defective_product.description}}</p>
             <p>{{ defective_product.current_amount|linebreaksbr }}</p>
         </div>
     {% endfor %}
