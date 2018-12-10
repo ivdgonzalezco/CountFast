@@ -10,6 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from storageManager.defective_product_forms import DefectiveProductForm
 from .models import DefectiveProducts
+
+
 def products(request):
     product = Product.objects.all()
     return render(request, 'storageManager/product_list.html', {'products': product})
@@ -151,12 +153,10 @@ def user_edit(request, pk):
         form = UserForm(instance=user)
     return render(request, 'storageManager/user_new.html', {'form': form})
 
-
 def moves(request):
     movement = Move.objects.all()
     product = Product.objects.all()
     return render(request, 'storageManager/move_list.html', {'moves': movement, 'products': product})
-
 
 def move_new(request):
     if request.method == "POST":
@@ -177,7 +177,6 @@ def move_new(request):
         form = MoveForm()
     return render(request, 'storageManager/move_new.html', {'form': form})
 
-
 def move_details(request, pk):
     move = get_object_or_404(Move, pk=pk)
     return render(request, 'storageManager/move_details.html', {'move': move})
@@ -188,7 +187,7 @@ def defective_products (request):
 
 def defective_product_details(request, pk):
     defective_product = get_object_or_404(DefectiveProducts, pk=pk)
-    return render(request, 'storageManager/defective_product_detail.html', {'defective_product': defective_product})
+    return render(request, 'storageManager/defective_product_details.html', {'defective_product': defective_product})
 
 def defective_product_new(request):
     if request.method == "POST":

@@ -1,8 +1,7 @@
 from django import forms
-from django.forms import ChoiceField, ModelChoiceField
+from django.forms import ModelChoiceField
 
 from .models import DefectiveProducts, Product
-
 
 class MenuModelChoiceField(ModelChoiceField):
 

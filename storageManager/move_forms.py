@@ -3,12 +3,10 @@ from django.forms import ModelChoiceField
 
 from .models import Move, Product
 
-
 class MenuModelChoiceField(ModelChoiceField):
 
     def label_from_instance(self, obj):
         return "Product %s" % (obj.name)
-
 
 class MoveForm(forms.ModelForm):
 
